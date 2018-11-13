@@ -11,7 +11,7 @@ import Text.Regex.TDFA.ByteString
 execOpts =  ExecOption{captureGroups = False}
 compOpts =  blankCompOpt
 
-Right re = compile compOpts execOpts "[/:\\. (),'\"]+"
+Right re = compile compOpts execOpts "[/:\\\\. (),'\"]+"
 
 replaceAll :: S.ByteString -> S.ByteString
 replaceAll = S.concat . replace
