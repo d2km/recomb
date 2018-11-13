@@ -1,10 +1,10 @@
 name:                recomb
 version:             0.1.0.0
-github:              "githubuser/recomb"
+github:              "d2km/recomb"
 license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2018 Author name here"
+author:              "Denis Korzunov"
+maintainer:          "hello@pl-rants.net"
+copyright:           "2018 Denis Korzunov"
 
 extra-source-files:
 - README.md
@@ -17,7 +17,7 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/githubuser/recomb#readme>
+description:         Please see the README on GitHub at <https://github.com/d2km/recomb#readme>
 
 dependencies:
 - base >= 4.7 && < 5
