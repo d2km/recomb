@@ -6,7 +6,7 @@ import Data.Attoparsec.ByteString.Char8
 
 chars = inClass "/:\\. (),'\""
 good = takeTill chars
-bad = takeWhile chars
+bad = takeWhile1 chars
 
 replaceAll :: S.ByteString -> S.ByteString
 replaceAll = S.concat . replace

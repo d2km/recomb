@@ -7,7 +7,9 @@ import qualified Light
 import qualified Tdfa
 import qualified Utils
 import qualified Atto
+import qualified Atto2
 import qualified Parsec
+import qualified ParsecV2
 
 -- src/Gen.hs defines Arbitrary instance for ByteString
 import Gen
@@ -41,12 +43,29 @@ prop_PcreNaive_eq_Atto s = s' == s''
   where s' = Pcre.replaceAll s
         s'' = Atto.replaceAll s
 
+prop_PcreNaive_eq_Atto2 s = s' == s''
+  where s' = Pcre.replaceAll s
+        s'' = Atto2.replaceAll s
+
 -- ... module Parsec (package parsec)
 prop_PcreNaive_eq_Parsec s = s' == s''
   where s' = Pcre.replaceAll s
         s'' = Parsec.replaceAll s
 
-return []
-runTests = $quickCheckAll
+prop_PcreNaive_eq_ParsecV2 s = s' == s''
+  where s' = Pcre.replaceAll s
+        s'' = ParsecV2.replaceAll s
 
-main = runTests
+
+return []
+runTests = mapM_ check $allProperties
+  where
+    check (name, prop) = do
+      putStrLn $ "testing "++name
+      quickCheckWith args prop
+      putStrLn ""
+    args = stdArgs{maxSuccess = 5000, maxSize = 256}
+
+main = do
+  putStr "\n\n"
+  runTests

@@ -6,7 +6,9 @@ import qualified Pcre
 import qualified Utils
 
 import qualified Atto
+import qualified Atto2
 import qualified Parsec
+import qualified ParsecV2
 
 import Data.ByteString.Char8 (pack)
 
@@ -30,7 +32,9 @@ main = do
            ]
        , bgroup "combinators" [
            bench "attoparsec" $ nf (map Atto.replaceAll) sources
+           , bench "attoparsec2" $ nf (map Atto2.replaceAll) sources
            , bench "parsec3" $ nf (map Parsec.replaceAll) sources
+           , bench "parsec3_v2" $ nf (map ParsecV2.replaceAll) sources
            ]
        ]
   where
